@@ -11,7 +11,7 @@
                 </svg>
             </div>
             <h1 class="display-5 fw-bold">
-                Welcome to Laravel+Bootstrap 5
+                Boolfolio
             </h1>
         </div>
     </div>
