@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+// Se sposto Controller cambia namespace
+namespace App\Http\Controllers\Admin;
 
+// Devo collegare di nuovo estensione Controller
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
