@@ -20,4 +20,5 @@ Ripercorriamo gli steps fatti a lezione ed iniziamo un nuovo progetto usando lar
 Iniziamo con il definire il layout, modello, migrazione, controller e rotte necessarie per il sistema portfolio:
 - Autenticazione: si parte con l'autenticazione e la creazione di un layout per back-office OK
 - Creazione del modello Project con relativa migrazione, seeder, controller e rotte
-- Per la parte di back-office creiamo un resource controller Admin\\ProjectController per gestire tutte le operazioni CRUD dei progetti
+- Per la parte di back-office creiamo un resource controller Admin\\ProjectController OK
+- per gestire tutte le operazioni CRUD dei progetti
