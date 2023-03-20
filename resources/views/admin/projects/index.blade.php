@@ -21,7 +21,7 @@
         <h1 class="my-3">
             Projects
         </h1>
-        <a href="#" class="btn btn-success my-3">
+        <a href="{{ route('admin.projects.create') }}" class="btn btn-success my-3">
             New Project
         </a>
         <table class="table">
