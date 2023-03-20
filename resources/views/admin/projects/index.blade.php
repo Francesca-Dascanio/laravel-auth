@@ -21,6 +21,9 @@
         <h1 class="my-3">
             Projects
         </h1>
+        <a href="#" class="btn btn-success my-3">
+            New Project
+        </a>
         <table class="table">
             <thead>
               <tr>
@@ -47,7 +50,7 @@
                             {{ $project->year }}
                         </td>
                         <td>
-                            <a href="" class="btn btn-primary">
+                            <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">
                                 View
                             </a>
                             <a href="" class="btn btn-warning">
