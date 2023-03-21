@@ -43,7 +43,14 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        // 
+        // Creo variabile data con request validata
+        $data = $request->validated();
+
+        // Riempio dati + salvo i dati con ::create
+        $newProject = Project::create($data);
+
+        // Redirect + messaggio di successo
+        return redirect()->route('admin.projects.show', $newProject->id)->with('success', 'New project has been created successfully!');
     }
 
     /**

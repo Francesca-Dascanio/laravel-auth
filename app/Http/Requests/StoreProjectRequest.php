@@ -13,7 +13,8 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // Modifico indicando true per autorizzare qualunque tipo di admin a salvare dati
+        return true;
     }
 
     /**
@@ -24,7 +25,10 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required | max: 100',
+            'slug' =>  'required | max: 100',
+            'year' => 'required | numeric | min: 1930 | max: 2030'
+            // Siccome image e description NON sono obbligatori provo a non metterli
         ];
     }
 }

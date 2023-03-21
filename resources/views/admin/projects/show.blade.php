@@ -21,6 +21,9 @@
         <h1 class="my-3">
             Single Project
         </h1>
+
+        @include('partials.success')
+        
         <div class="project">
             <div class="card text-center">
                 <div class="card-header">

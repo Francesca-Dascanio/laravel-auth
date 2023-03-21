@@ -21,26 +21,27 @@
         <h1 class="my-3">
             Projects
         </h1>
-        <a href="#" class="btn btn-success my-3">
-            New Project
-        </a>
-        <form action="{{ route('products.store') }}" method="POST">
+
+        {{-- Errors --}}
+        @include('partials.errors')
+
+        <form action="{{ route('admin.projects.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title *</label>
-                <input type="text" class="form-control" name="title" id="title" required maxlength="255" placeholder="Write the title of the project...">
+                <input type="text" class="form-control" name="title" id="title" required maxlength="100" placeholder="Write the title of the project...">
             </div>
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug *</label>
-                <input type="text" class="form-control" name="slug" id="slug" required placeholder="Write the slug...">
+                <input type="text" class="form-control" name="slug" id="slug" required maxlength="100" placeholder="Write the slug...">
             </div>
             <div class="mb-3">
                 <label for="year" class="form-label">Year *</label>
-                <input type="number" class="form-control" name="year" id="year" required placeholder="Write when you have worked on the project...">
+                <input type="number" class="form-control" name="year" id="year" required min="1970" max="2030" placeholder="Write when you have worked on the project...">
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image url *</label>
+                <label for="image" class="form-label">Image url</label>
                 <input type="text" class="form-control" name="image" id="image">
             </div>
             <div class="mb-3">
@@ -49,7 +50,7 @@
             </div>
             <div class="mb-3">
                 <p>
-                    The signed fields with * are <strong>compulsory</strong>
+                    The fields with * are <strong>compulsory</strong>.
                 </p>
             </div>
             <div>

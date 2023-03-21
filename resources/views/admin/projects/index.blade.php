@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid mt-4">
-    <div class="row justify-content-center">
+    <div class="row">
         {{-- <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
@@ -21,9 +21,10 @@
         <h1 class="my-3">
             Projects
         </h1>
-        <a href="{{ route('admin.projects.create') }}" class="btn btn-success my-3">
+        <a href="{{ route('admin.projects.create') }}" class="btn btn-success my-3 ms-2" style="width: auto">
             New Project
         </a>
+
         <table class="table">
             <thead>
               <tr>
