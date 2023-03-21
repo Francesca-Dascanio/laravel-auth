@@ -107,6 +107,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index')->with('success', 'Thr project has been remove successfully!');
     }
 }
