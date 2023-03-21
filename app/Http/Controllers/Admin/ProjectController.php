@@ -74,7 +74,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -86,7 +88,15 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        // Prendo dati validati in variabile
+        $data = $request->validated();
+
+        // Utilizzo dati 
+        $project->update($data);
+
+        // Redirect
+        return redirect()->route('admin.projects.show', $project->id)->with('success', 'The project has been updated successfully!');
+
     }
 
     /**

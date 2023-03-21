@@ -13,7 +13,8 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // Modifico con true per permettere a tutti admin di modificare dati
+        return true;
     }
 
     /**
@@ -24,7 +25,10 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required | max: 100',
+            'slug' =>  'required | max: 100',
+            'year' => 'required | numeric | min: 1930 | max: 2030'
+            // Siccome image e description NON sono obbligatori provo a non metterli
         ];
     }
 }

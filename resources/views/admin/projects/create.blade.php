@@ -19,7 +19,7 @@
             </div>
         </div> --}}
         <h1 class="my-3">
-            Projects
+            New Project
         </h1>
 
         {{-- Errors --}}
@@ -30,23 +30,23 @@
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title *</label>
-                <input type="text" class="form-control" name="title" id="title" required maxlength="100" placeholder="Write the title of the project...">
+                <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" required maxlength="100" placeholder="Write the title of the project...">
             </div>
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug *</label>
-                <input type="text" class="form-control" name="slug" id="slug" required maxlength="100" placeholder="Write the slug...">
+                <input type="text" class="form-control" name="slug" id="slug" value="{{ old('slug') }}" required maxlength="100" placeholder="Write the slug...">
             </div>
             <div class="mb-3">
                 <label for="year" class="form-label">Year *</label>
-                <input type="number" class="form-control" name="year" id="year" required min="1970" max="2030" placeholder="Write when you have worked on the project...">
+                <input type="number" class="form-control" name="year" id="year" value="{{ old('year') }}"required min="1970" max="2030" placeholder="Write when you have worked on the project...">
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image url</label>
-                <input type="text" class="form-control" name="image" id="image">
+                <input type="text" class="form-control" name="image" id="image" value="{{ old('image') }}">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione..."></textarea>
+                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione...">{{ old('description') }}"</textarea>
             </div>
             <div class="mb-3">
                 <p>

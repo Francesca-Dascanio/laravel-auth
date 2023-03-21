@@ -54,7 +54,7 @@
                             <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">
                                 View
                             </a>
-                            <a href="" class="btn btn-warning">
+                            <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning">
                                 Update
                             </a>
                             <a href="" class="btn btn-danger">
