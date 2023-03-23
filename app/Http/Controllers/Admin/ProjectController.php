@@ -102,6 +102,37 @@ class ProjectController extends Controller
         // Prendo dati validati in variabile
         $data = $request->validated();
 
+
+        // Se nuova immagine da inserire | cancellare vecchia immagine | cancellare vecchia immagine senza inserirne una nuova
+        if (array_key_exists('delete_img', $data['img'])) {
+
+            if (isset($project->img)) {
+                Storage::delete($project->img);
+            }
+            else if (array_key_exists('img', $data)) {
+                // Crea path all'immagine
+                $imgPath = Storage::put('public', $data['img']);
+                $data['img'] = $imgPath;
+
+                if (isset($project->img)) {
+                    Storage::delete($project->img);
+                }
+            }
+        }
+
+        // Solo nuova immagine da inserire | cancella vecchia immagine
+        // // Se c'è nuova immagine da inserire 
+        // if (array_key_exists('img', $data)) {
+        //     // Crea path all'immagine
+        //     $imgPath = Storage::put('public', $data['img']);
+        //     $data['img'] = $imgPath;
+
+        //     // Se c'era immagine precedente allora cancellala
+        //     if (isset($project->img)) {
+        //         Storage::delete($project->img);
+        //     }
+        // }
+
         // Utilizzo dati 
         $project->update($data);
 

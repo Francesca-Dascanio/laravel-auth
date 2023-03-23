@@ -11,7 +11,7 @@
         {{-- Errors --}}
         @include('partials.errors')
 
-        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data" class="d-inline">
             @csrf
 
             @method('PUT')
@@ -29,12 +29,18 @@
                 <input type="number" class="form-control" name="year" id="year" required min="1970" max="2030" value="{{ old('year', $project->year) }}" placeholder="Write when you have worked on the project...">
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image url</label>
-                <input type="text" class="form-control" name="image" id="image" value="{{ old('image', $project->image) }}" >
+                <label for="img" class="form-label">File (image)</label>
+                <input type="file" class="form-control" name="img" id="img" accept="image/*">
+            </div>
+            <div>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="delete_img">
+                <label class="form-check-label" for="defaultCheck1">
+                    Delete file
+                </label>
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione...">{{ old('description', $project->description) }}" </textarea>
+                <label for="description" class="form-label mt-5">Description</label>
+                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione...">{{ old('description', $project->description) }}</textarea>
             </div>
             <div class="mb-3">
                 <p>
@@ -47,44 +53,45 @@
                 <button type="submit" class="btn btn-success">
                     Update
                 </button>
-
-                 {{-- Delete --}}
-                <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Delete
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                Delete comic
-                            </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure to DELETE this project?
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                No, come back
-                            </button>
-                            <button type="submit" class="btn btn-danger">
-                                Yes, delete the project
-                            </button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </form>
-                
             </div>
         </form>
+
+            {{-- Delete --}}
+        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline my-2">
+            @csrf
+            @method('DELETE')
+
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Delete comic
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to DELETE this project?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        No, come back
+                    </button>
+                    <button type="submit" class="btn btn-danger">
+                        Yes, delete the project
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </form>
+        
+
     </div>
 </div>
 @endsection

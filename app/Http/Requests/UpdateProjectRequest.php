@@ -27,8 +27,9 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => 'required | max: 100',
             'slug' =>  'required | max: 100',
-            'year' => 'required | numeric | min: 1930 | max: 2030'
-            // Siccome image e description NON sono obbligatori provo a non metterli
+            'year' => 'required | numeric | min: 1930 | max: 2030',
+            'img' => 'nullable | image | max: 2048',
+            'description' => 'nullable'
         ];
     }
 }
