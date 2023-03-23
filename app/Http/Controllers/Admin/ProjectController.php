@@ -13,6 +13,10 @@ use App\Models\Project;
 
 // Facade
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+
+// Mails
+use App\Mail\NewProject;
 
 class ProjectController extends Controller
 {
@@ -60,6 +64,7 @@ class ProjectController extends Controller
         // Riempio dati + salvo i dati con ::create
         $newProject = Project::create($data);
         
+        Mail::to(['corinna@traversa.com', 'camilla@scola.com'])->send(new NewProject($newProject));
 
         // Redirect + messaggio di successo
         return redirect()->route('admin.projects.show', $newProject->id)->with('success', 'New project has been created successfully!');
