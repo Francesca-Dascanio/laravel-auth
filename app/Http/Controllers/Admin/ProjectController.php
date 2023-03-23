@@ -59,6 +59,7 @@ class ProjectController extends Controller
 
         // Riempio dati + salvo i dati con ::create
         $newProject = Project::create($data);
+        
 
         // Redirect + messaggio di successo
         return redirect()->route('admin.projects.show', $newProject->id)->with('success', 'New project has been created successfully!');
@@ -111,14 +112,14 @@ class ProjectController extends Controller
                 $project->img = null;
                 $project->save();
             }
-            else if (array_key_exists('img', $data)) {
-                // Crea path all'immagine
-                $imgPath = Storage::put('public', $data['img']);
-                $data['img'] = $imgPath;
+        }
+        else if (array_key_exists('img', $data)) {
+            // Crea path all'immagine
+            $imgPath = Storage::put('public', $data['img']);
+            $data['img'] = $imgPath;
 
-                if ($project->img) {
-                    Storage::delete($project->img);
-                }
+            if ($project->img) {
+                Storage::delete($project->img);
             }
         }
 
