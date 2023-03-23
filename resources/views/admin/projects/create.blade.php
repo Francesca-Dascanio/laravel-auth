@@ -25,7 +25,8 @@
         {{-- Errors --}}
         @include('partials.errors')
 
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        {{-- Aggiungo a form enctype --}}
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -41,12 +42,13 @@
                 <input type="number" class="form-control" name="year" id="year" value="{{ old('year') }}"required min="1970" max="2030" placeholder="Write when you have worked on the project...">
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image url</label>
-                <input type="text" class="form-control" name="image" id="image" value="{{ old('image') }}">
+                {{-- Aggiungo type=file e accept (togliere value perchè non tiene old) --}}
+                <label for="img" class="form-label">File (image)</label>
+                <input type="file" class="form-control" name="img" id="img" accept="image/*">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione...">{{ old('description') }}"</textarea>
+                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione...">{{ old('description') }}</textarea>
             </div>
             <div class="mb-3">
                 <p>

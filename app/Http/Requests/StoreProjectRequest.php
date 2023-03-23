@@ -22,13 +22,17 @@ class StoreProjectRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
+    // Validazione backend
     public function rules()
     {
         return [
             'title' => 'required | max: 100',
             'slug' =>  'required | max: 100',
-            'year' => 'required | numeric | min: 1930 | max: 2030'
-            // Siccome image e description NON sono obbligatori provo a non metterli
+            'year' => 'required | numeric | min: 1930 | max: 2030',
+            'description' => 'nullable',
+            'img' => 'nullable | image | max: 2048'
+            // Mettere comunque anche colonne nullable affinchè vengano salvati i dati - al file max: 2048 sta per 2Megabyte (1024 Kilobyte = 1 Megabyte)
         ];
     }
 }

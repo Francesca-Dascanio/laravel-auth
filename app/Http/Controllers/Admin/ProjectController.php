@@ -7,7 +7,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+
+// Models
 use App\Models\Project;
+
+// Facade
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -45,6 +50,12 @@ class ProjectController extends Controller
     {
         // Creo variabile data con request validata
         $data = $request->validated();
+
+        // Se file esiste, allora prendi path da inserire in DB
+        if (array_key_exists('img', $data)) {
+            $imgPath = Storage::put('public', $data['img']);
+            $data['img'] = $imgPath;
+        }
 
         // Riempio dati + salvo i dati con ::create
         $newProject = Project::create($data);
