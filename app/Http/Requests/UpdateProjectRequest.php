@@ -29,7 +29,9 @@ class UpdateProjectRequest extends FormRequest
             'slug' =>  'required | max: 100',
             'year' => 'required | numeric | min: 1930 | max: 2030',
             'img' => 'nullable | image | max: 2048',
-            'description' => 'nullable'
+            'delete_img' => 'nullable',
+            'description' => 'nullable',
+            
         ];
     }
 }

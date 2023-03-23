@@ -30,14 +30,13 @@
                     {{ $project->title }}
                 </div>
                 <div class="card-body">
-                    <img class="card-img-top" src="{{ asset('storage/'.$project->img) }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('storage/'.$project->img) }}" alt="Image">
                     <h5 class="card-title">
                         {{ $project->slug }}
                     </h5>
                     <p class="card-text">
                         {{ $project->description }}
                     </p>
-                    {{-- Qui in caso immagine --}}
                 </div>
                 <div class="card-footer text-muted">
                     {{ $project->year }}

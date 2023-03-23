@@ -102,19 +102,21 @@ class ProjectController extends Controller
         // Prendo dati validati in variabile
         $data = $request->validated();
 
-
         // Se nuova immagine da inserire | cancellare vecchia immagine | cancellare vecchia immagine senza inserirne una nuova
-        if (array_key_exists('delete_img', $data['img'])) {
+        if (array_key_exists('delete_img', $data)) {
 
-            if (isset($project->img)) {
+            if ($project->img) {
                 Storage::delete($project->img);
+
+                $project->img = null;
+                $project->save();
             }
             else if (array_key_exists('img', $data)) {
                 // Crea path all'immagine
                 $imgPath = Storage::put('public', $data['img']);
                 $data['img'] = $imgPath;
 
-                if (isset($project->img)) {
+                if ($project->img) {
                     Storage::delete($project->img);
                 }
             }
@@ -149,6 +151,13 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        // Se esiste già project->img allora cancella l'immagine
+        if ($project->img) {
+            Storage::delete($project->img);
+        }
+
+        // Cancella tutto il progetto
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('success', 'Thr project has been remove successfully!');

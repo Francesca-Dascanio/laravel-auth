@@ -29,17 +29,22 @@
                 <input type="number" class="form-control" name="year" id="year" required min="1970" max="2030" value="{{ old('year', $project->year) }}" placeholder="Write when you have worked on the project...">
             </div>
             <div class="mb-3">
+                {{-- Se c'è immagine precedente la mostro insieme al checkbox --}}
+                @if ($project->img)
+                    <img src="{{ asset('storage/'.$project->img) }}" alt="{{ $project->title }}" style="height: 300px" class="d-block">
+                    {{-- checkbox --}}
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="delete_img" name="delete_img">
+                        <label class="form-check-label" for="delete_img">
+                            Delete file
+                        </label>
+                    </div>
+                @endif
                 <label for="img" class="form-label">File (image)</label>
                 <input type="file" class="form-control" name="img" id="img" accept="image/*">
             </div>
-            <div>
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="delete_img">
-                <label class="form-check-label" for="defaultCheck1">
-                    Delete file
-                </label>
-            </div>
             <div class="mb-3">
-                <label for="description" class="form-label mt-5">Description</label>
+                <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci una descrizione...">{{ old('description', $project->description) }}</textarea>
             </div>
             <div class="mb-3">
